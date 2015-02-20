@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'nokogiri'
+
+file = File.open("julius_caesar.xml")
+doc = Nokogiri::XML(file) do |config|
+  config.noblanks
+end
+file.close
+
+Play.create(title: doc.css("PLAY TITLE").children.first.text)
