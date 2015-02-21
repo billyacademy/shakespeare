@@ -2,7 +2,7 @@ class Scene < ActiveRecord::Base
   validates :act_id,
     presence: true
 
-  validates :role_id,
+  validates :title,
     presence: true
 
   belongs_to :act
