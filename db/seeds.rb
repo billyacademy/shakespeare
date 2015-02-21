@@ -27,3 +27,8 @@ file.close
 # doc.xpath('//SCENE').each do |scene|
 #   Scene.create(title: scene.xpath('TITLE').text.gsub("\n", '').strip, act_id: Act.find_by(title: scene.parent.xpath('TITLE').text).id)
 # end
+
+# create roles
+doc.xpath('//PERSONA').each do |persona|
+  Role.create(name: persona.text, play_id: Play.find_by(title: persona.xpath("/PLAY/TITLE").children.first.text).id)
+end
