@@ -7,10 +7,23 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'nokogiri'
 
+
 file = File.open("julius_caesar.xml")
 doc = Nokogiri::XML(file) do |config|
   config.noblanks
 end
 file.close
 
-Play.create(title: doc.css("PLAY TITLE").children.first.text)
+# #create play
+# Play.create(title: doc.css("PLAY TITLE").children.first.text)
+
+# # create acts
+# doc.xpath('PLAY//ACT').each  do |act|
+#   Act.create(title: act.xpath('TITLE').text, play_id: Play.find_by(title: doc.xpath('//PLAY//TITLE').first.text).id)
+# end
+
+
+# # create scenes
+# doc.xpath('//SCENE').each do |scene|
+#   Scene.create(title: scene.xpath('TITLE').text.gsub("\n", '').strip, act_id: Act.find_by(title: scene.parent.xpath('TITLE').text).id)
+# end
