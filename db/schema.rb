@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150221022807) do
+ActiveRecord::Schema.define(version: 20150221030604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20150221022807) do
   create_table "acts", force: :cascade do |t|
     t.string   "title",      null: false
     t.integer  "play_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lines", force: :cascade do |t|
+    t.string   "message",    null: false
+    t.integer  "speech_id",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -44,6 +51,10 @@ ActiveRecord::Schema.define(version: 20150221022807) do
   end
 
   create_table "speeches", force: :cascade do |t|
+    t.integer  "scene_id",   null: false
+    t.integer  "role_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
