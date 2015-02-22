@@ -7,4 +7,5 @@ class Scene < ActiveRecord::Base
 
   belongs_to :act
   has_many :speeches
+  has_many :roles, through: :roles_scenes
 end
