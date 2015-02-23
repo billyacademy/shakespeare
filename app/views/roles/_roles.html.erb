@@ -1,0 +1,19 @@
+<table border="1">
+  <tr>
+    <th width = 200px><%= sortable("role") %></th>
+    <th><%= sortable("num_of_lines", "calculated") %></th>
+    <th><%= sortable("longest_speech", "calculated")%></th>
+    <th><%= sortable("num_of_scenes", "calculated")%></th>
+    <th><%= sortable("percent_of_scenes", "calculated")%></th>
+  </tr>
+  <% @roles.each do |role| %>
+  <tr>
+    <td><%= role.name %></td>
+    <td><%= role.num_of_lines %></td>
+    <td><%= role.longest_speech %></td>
+    <td><%= role.num_of_scenes %></td>
+    <td><%= number_to_percentage(role.percent_of_scenes, precision: 2) %></td>
+  </tr>
+  <% end %>
+</table>
+<%= will_paginate @products %>
