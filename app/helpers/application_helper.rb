@@ -6,7 +6,6 @@ module ApplicationHelper
     else
       direction = "asc"
     end
-    # direction = column == params[:sort] && params[:direction] == "asc" ? "desc" : "asc"
     link_to title, sort: column, direction: direction, type: type
   end
 end
