@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(function() {
+  $(document).on("click","#roles th a, #roles .pagination a", function() {
+    $.getScript(this.href);
+    return false;
+  });
+});
