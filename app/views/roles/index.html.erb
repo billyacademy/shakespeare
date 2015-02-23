@@ -1,0 +1,28 @@
+<h1><%= @play.title %></h1>
+<table border="1">
+  <tr>
+    <th>role</th>
+    <th># of lines spoken</th>
+    <th>longest speech</th>
+    <th># of scenes role appears</th>
+    <th>% of scenes role appears</th>
+  </tr>
+  <% @roles.each do |role| %>
+  <tr>
+    <td><%= role.name %></td>
+    <td><%= role.lines.count %></td>
+    <td>
+      <% max_lines = 0 %>
+      <% role.speeches.each do |speech| %>
+        <% if speech.lines.count > max_lines %>
+          <% max_lines = speech.lines.count %>
+        <% end %>
+      <% end  %>
+      <%= max_lines %> lines
+    </td>
+
+    <td><%= role.scenes.count %></td>
+    <td><%= number_to_percentage((role.scenes.count.to_f / Scene.all.count.to_f)*100, precision: 2) %></td>
+  </tr>
+  <% end %>
+</table>
