@@ -38,10 +38,6 @@ FactoryGirl.define do
   factory :line do
     sequence(:message) { |n| "This is line #{n} for the character" }
     speech_id 1
-    # speech
-    # role
-    # scene
-    # act
-    # play
+    speech
   end
 end
