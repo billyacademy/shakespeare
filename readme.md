@@ -8,4 +8,16 @@ The object of this coding challenge was to parse an XML document containing the 
   - Each column is sortable, ascending and descending if the column header is clicked.
     - The sort is done with ajax and jQuery so that the entire page is not loaded each sort.
 
-    
+I assumed that the files would only be added by the owner of the application and therefore did not include a user option to upload xml files
+
+To add a play to the database the owner can simply go into the rails console and run the ImportXML
+  - ie. ImportXML.import_play('julius_caesar.xml'), having the xml file in the root directory for the application.
+
+
+Some notes:
+
+- Opted to use a database to store all of the xml data
+  - Might be more clear to navigate a database with 100 plays, over a hash.
+- The ImportXML model class is something that can be improved and refactored
+  - A lot of SQL queries are being run, probably not great for scaling
+- Did limited testing, might be worth revisiting to test all units and add more feature testing to assure that sorts are working for the end user.
