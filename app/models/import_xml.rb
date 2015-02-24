@@ -1,4 +1,4 @@
-class Xml_importer
+class ImportXML
   def self.import_play(xml_file)
     file = File.open(xml_file)
     doc = Nokogiri::XML(file) do |config|
@@ -29,7 +29,6 @@ class Xml_importer
         end
       end
     end
-
 
     ##SCENES && SCENEROLE##
     doc.xpath('//SCENE').each do |scene|
