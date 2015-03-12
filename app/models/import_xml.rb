@@ -9,8 +9,14 @@ class ImportXML
     play_title = doc.css("PLAY TITLE").children.first.text
 
     ##PLAY TITLE##
-    Play.create(title: play_title)
+    def create_play(title)
+      Play.create(title: title)
+    end
+
+    create_play(play_title)
+
     current_play_id = Play.find_by(title: play_title).id
+    
     ##ACTS##
     doc.xpath('PLAY//ACT').each  do |act|
       Act.create(title: act.xpath('TITLE').text, play_id: current_play_id)
