@@ -11,6 +11,13 @@ class Role < ActiveRecord::Base
   validates :play_id,
     presence: true
 
+  def self.parse_all(roles, play)
+      roles.map { |role| Role.create(name: role.text, play_id: play.id) }
+  end
+
+  def self.parse_unlisted(speeches, play)
+    speeches.map { |speech| Role.create(name: speech.xpath('SPEAKER').first.text, play_id: play.id) if speech.xpath('SPEAKER').first.text != "All" && Role.find_by(name: speech.xpath('SPEAKER').first.text) == nil }
+  end
   def num_of_scenes
     scenes.count
   end
@@ -32,5 +39,4 @@ class Role < ActiveRecord::Base
   def num_of_lines
     lines.count
   end
-
 end
