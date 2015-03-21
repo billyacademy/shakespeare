@@ -1,6 +1,8 @@
 <h1> A List of Plays </h1>
 <h3> Click a play to view it's role statistics </h3>
 
+<div id="plays">
 <% @plays.each do |play| %>
   <%= link_to play.title, play_roles_path(play.id) %>
 <% end %>
+</div>
